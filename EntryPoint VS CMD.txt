@@ -1,0 +1,30 @@
+
+ENTRYPOINT VS CMD IN DOCKER
+
+CMD runs binaries command, also takes arguments 
+
+FROM ubuntu:lastest
+CMD [“echo”,”Hello world”]
+
+This would give us Hello World when ran
+
+ENTRY POINT runs commands too but user can pass in argument to the docker file when you use the docker run 
+
+FROM ubuntu:lastest
+ENTRYPOINT [“echo”]
+
+So when you use docker run you would say docker run imagename Hello Racool
+The output would be “Hello Racool”
+
+Now the combination of CMD and ENTRYPOINT 
+
+ENTRYPOINT can act as the command that receives input from users using the docker run imagename … args while CMD acts as a default argument if no argument is passed from the docker run command
+
+FROM ubuntu:latest
+ENTRYPOINT [“echo”]
+CMD [“Hello”]
+
+When you say docker run … imagename : you will get “Hello” but if you ran
+docker run … imagename Hello World : you will get Hello Wolrd as it overrides the CMD default command or argument 
+
+
